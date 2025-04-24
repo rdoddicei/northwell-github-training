@@ -1,5 +1,3 @@
-# filepath: basic-game-project/basic-game-project/src/game.py
-
 import random
 import sys
 import pygame
@@ -7,31 +5,44 @@ import pygame
 # Initialize Pygame
 pygame.init()
 
-# Set up display
+# Constants
 WIDTH, HEIGHT = 800, 600
+FPS = 60
+BACKGROUND_COLOR = (0, 0, 0)
+
+# Initialize display
 window = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Basic Game Project")
 
 # Game variables
-running = True
 clock = pygame.time.Clock()
 
+def handle_events():
+    """Handle user input and events."""
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            return False
+    return True
+
+def update_game():
+    """Update game logic."""
+    # Add game logic here
+    pass
+
+def render_game():
+    """Render game elements."""
+    window.fill(BACKGROUND_COLOR)
+    # Add rendering logic here
+    pygame.display.flip()
+
 def game_loop():
-    global running
+    """Main game loop."""
+    running = True
     while running:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                running = False
-
-        # Game logic goes here
-
-        # Fill the background
-        window.fill((0, 0, 0))
-
-        # Render game elements here
-
-        pygame.display.flip()
-        clock.tick(60)
+        running = handle_events()
+        update_game()
+        render_game()
+        clock.tick(FPS)
 
     pygame.quit()
     sys.exit()
