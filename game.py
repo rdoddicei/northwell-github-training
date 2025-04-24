@@ -14,38 +14,30 @@ BACKGROUND_COLOR = (0, 0, 0)
 window = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Basic Game Project")
 
-# Game variables
-clock = pygame.time.Clock()
-
-def handle_events():
-    """Handle user input and events."""
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            return False
-    return True
-
-def update_game():
-    """Update game logic."""
-    # Add game logic here
-    pass
-
-def render_game():
-    """Render game elements."""
-    window.fill(BACKGROUND_COLOR)
-    # Add rendering logic here
-    pygame.display.flip()
-
-def game_loop():
-    """Main game loop."""
+def main():
+    """Main function containing the entire game logic."""
+    clock = pygame.time.Clock()
     running = True
+
     while running:
-        running = handle_events()
-        update_game()
-        render_game()
+        # Handle events
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
+
+        # Update game logic
+        # Add game logic here
+
+        # Render game elements
+        window.fill(BACKGROUND_COLOR)
+        # Add rendering logic here
+        pygame.display.flip()
+
+        # Control frame rate
         clock.tick(FPS)
 
     pygame.quit()
     sys.exit()
 
 if __name__ == "__main__":
-    game_loop()
+    main()
